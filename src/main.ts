@@ -2,7 +2,7 @@ import "@src/extension"
 
 import { Command } from "commander"
 
-import { addBackup } from "@src/commands"
+import { addBackup, addDirectory } from "@src/commands"
 import { Log } from "@src/utils"
 
 const start = async () => {
@@ -13,6 +13,7 @@ const start = async () => {
     program.version("0.2.0")
 
     addBackup(program)
+    addDirectory(program)
 
     await program.parseAsync(process.argv)
   } catch (e) {

@@ -4,3 +4,9 @@ export function allTrue(...values: unknown[]): boolean {
     values.length
   )
 }
+
+export function runIfPredicate(functionToRun: () => unknown, predicate: unknown): void {
+  if (predicate) {
+    functionToRun()
+  }
+}

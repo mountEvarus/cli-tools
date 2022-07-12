@@ -13,7 +13,7 @@ export function addBackup(program: Command): void {
     .description("Backup a list of directories")
     .option(
       "-d, --destination <path>",
-      "path to the desired backup destination",
+      "backup destination",
       "",
     )
     .option(
@@ -25,7 +25,7 @@ export function addBackup(program: Command): void {
     .action(doBackup)
 }
 
-function doBackup(options: Options) {
+function doBackup(options: Options): void {
   Log.module("Backup")
   const { destination, paths } = options
 
