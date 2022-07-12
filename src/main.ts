@@ -1,5 +1,8 @@
+import "@src/extension"
+
 import { Command } from "commander"
 
+import { addBackup } from "@src/commands"
 import { Log } from "@src/utils"
 
 const start = async () => {
@@ -7,7 +10,9 @@ const start = async () => {
     Log.start()
 
     const program = new Command("CLI Utils")
-    program.version("0.1.0")
+    program.version("0.2.0")
+
+    addBackup(program)
 
     await program.parseAsync(process.argv)
   } catch (e) {
