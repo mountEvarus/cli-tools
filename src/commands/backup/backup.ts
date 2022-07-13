@@ -11,17 +11,8 @@ export function addBackup(program: Command): void {
   program
     .command("backup")
     .description("Backup a list of directories")
-    .option(
-      "-d, --destination <path>",
-      "backup destination",
-      "",
-    )
-    .option(
-      "-p, --paths <path[]>",
-      "comma seperated list of paths to backup",
-      csvToArray,
-      [],
-    )
+    .option("-d, --destination <path>", "backup destination", "")
+    .option("-p, --paths <path[]>", "comma seperated list of paths to backup", csvToArray, [])
     .action(doBackup)
 }
 

@@ -1,1 +1,2 @@
 import "./boolean"
+import "./string"
