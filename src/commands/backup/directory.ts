@@ -1,18 +1,12 @@
-import { homedir } from "os"
-
 export class Directory {
   private dir: string
 
   private constructor(dir: string) {
-    this.dir = this.replaceHomeVar(dir)
+    this.dir = dir
   }
 
   public static create(dir: string): Directory {
     return new Directory(dir)
-  }
-
-  private replaceHomeVar(dir: string): string {
-    return dir.startsWith("~") ? dir.replace("~", homedir()) : dir
   }
 
   public addTrailingSlash(): Directory {

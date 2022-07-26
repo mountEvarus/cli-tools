@@ -2,10 +2,12 @@ import * as fs from "fs"
 
 import { Command } from "commander"
 
-import { Log, allTrue, assert, cp, csvToArray, mkdir } from "@src/utils"
+import { Log, allTrue, assert, csvToArray, replaceHomeVar, scp } from "@src/utils"
 
 import { Directory } from "./directory"
+import { File } from "./file"
 import { Options } from "./options"
+
 
 export function addBackup(program: Command): void {
   program
@@ -23,30 +25,36 @@ function doBackup(options: Options): void {
   try {
     assert(
       allTrue(destination, paths.length),
-      "--destination & --paths must be defined, see 'backup --help' for more details",
+      "destination & paths must be defined, see 'backup --help' for more details",
     )
 
-    if (fs.existsSync(destination).not()) {
-      mkdir(destination)
-    }
+    const rootDir = Directory
+      .create(destination)
+      .addTrailingSlash()
+      .result()
 
-    paths.forEach((path) => {
-      const source = Directory.create(path).result()
+    paths
+      .map((path) => replaceHomeVar(path))
+      .forEach((path) => {
+        if (fs.lstatSync(path).isDirectory()) {
+          const subDir = Directory.create(path)
+            .addTrailingSlash()
+            .subDirectory()
+            .appendDate()
+            .result()
 
-      const rootDir = Directory
-        .create(destination)
-        .addTrailingSlash()
-        .result()
+          Log.info(`Backing up ${path}`)
+          scp(path, rootDir + subDir)
+        } else {
+          const file = File.create(path)
+            .appendDate()
+            .result()
 
-      const subDir = Directory.create(path)
-        .addTrailingSlash()
-        .subDirectory()
-        .appendDate()
-        .result()
+          Log.info(`Backing up ${path}`)
+          scp(path, rootDir + file)
+        }
 
-      Log.info(`Backing up ${source}`)
-      cp(source, rootDir + subDir)
-    })
+      })
   } catch (e) {
     Log.error(e)
   }

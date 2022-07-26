@@ -7,3 +7,7 @@ export function cp(sourceDir: string, destinationDir: string): void {
 export function mkdir(directory: string): void {
   exec(`mkdir -p "${directory}"`)
 }
+
+export function scp(sourceDir: string, destinationDir: string): void {
+  exec(`scp -r "${sourceDir}" "${destinationDir}"`)
+}

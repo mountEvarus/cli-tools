@@ -16,12 +16,12 @@ $ yarn start music -p ~/Path/to/playlist/Playlist.m3u -c ~/Music
 
 ### **Backup**
 
-- Backup files & folders.
+- Backup files & folders over ssh.
 
-| option      | argument    | description                                   |
-|-------------|-------------|-----------------------------------------------|
-| destination | directory   | the backup destination                        |
-| paths       | directory[] | comma seperated list of directories to backup |
+| option      | argument  | description                                           |
+|-------------|-----------|-------------------------------------------------------|
+| destination | directory | the backup destination                                |
+| paths       | path[]    | comma seperated list of directories & files to backup |
 
 ### **Directory**
 
