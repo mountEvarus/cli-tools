@@ -4,7 +4,7 @@
   "name": "cli-utils",
   "packageManager": "yarn@1.22.19",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.4.1",
   "engines": {
     "node": ">=16"
   },

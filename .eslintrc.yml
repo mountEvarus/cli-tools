@@ -1,6 +1,5 @@
 root: true
 env:
-  browser: true
   es2021: true
 parser: "@typescript-eslint/parser"
 extends:
@@ -21,8 +20,6 @@ settings:
   import/resolver:
     typescript:
       project: ["./tsconfig.json"]
-  react:
-    version: detect
 rules:
   object-curly-spacing:
     - warn
