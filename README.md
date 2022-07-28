@@ -1,4 +1,4 @@
-# CLI Utils
+# CLI Utils v0.4.2
 
 - This project is designed for easier control of backups, directories and music playlists.
 
@@ -44,7 +44,3 @@ $ yarn start music -p ~/Path/to/playlist/Playlist.m3u -c ~/Music
 | info             | n/a       | table of all music files in the playlist tableinformation   |
 | missing-metadata | n/a       | use onl files that are missing essential metadata           |
 | playlist         | directory | the path of the playlist                                    |
-
-
-TODOS:
-- recreate fully w/ new knowledge (should be quick!)
