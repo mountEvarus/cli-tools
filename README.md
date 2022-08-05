@@ -1,4 +1,4 @@
-# CLI Utils v0.4.2
+# CLI Utils v0.5.0
 
 - This project is designed for easier control of backups, directories and music playlists.
 
