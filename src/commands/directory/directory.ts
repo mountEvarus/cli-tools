@@ -1,6 +1,7 @@
+import { assert } from "@evan-abc/typescript-helpers"
 import { Command } from "commander"
 
-import { Log, assert, atLeastOneTrue, runIfPredicate } from "@src/utils"
+import { Log, atLeastOneTrue, runIfPredicate } from "@src/utils"
 
 import { logFiles, removeFiles } from "./actions"
 import { getFilesFromDirectory } from "./file"
@@ -22,8 +23,8 @@ function doDirectory(options: Options): void {
     Log.module("Directory")
     const { directory, extension, info, remove } = options
 
-    assert(Boolean(directory), "directory must be specified")
-    assert(atLeastOneTrue(info, remove), "No options were selected for this module!")
+    assert(Boolean(directory), new Error("directory must be specified"))
+    assert(atLeastOneTrue(info, remove), new Error("No options were selected for this module!"))
 
     const files = getFilesFromDirectory(directory).filter((file) => {
       return extension ? file.endsWith(`.${extension}`) : true

@@ -24,6 +24,11 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@evan-abc/typescript-helpers@^0.3.5":
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/@evan-abc/typescript-helpers/-/typescript-helpers-0.3.5.tgz#f3e80f61c607e869d9b3293f83f6ea56f0c7246e"
+  integrity sha512-3AjKks8TFjoWxUjxHm9N77WUFQ2kpjV31qy+C50PHmNDjdpKxP31u6j4QkglRVql/SYABGK/2J08JFYi7wuoJg==
+
 "@humanwhocodes/config-array@^0.10.4":
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.10.4.tgz#01e7366e57d2ad104feea63e72248f22015c520c"

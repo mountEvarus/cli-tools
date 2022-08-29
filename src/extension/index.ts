@@ -1,2 +1,1 @@
-import "./boolean"
 import "./string"

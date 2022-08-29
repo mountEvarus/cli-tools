@@ -10,7 +10,3 @@ String.prototype.replaceForbiddenChar = function(): string {
     .replace(new RegExp("\\.", "g"), "")
     .replace(new RegExp("\\\"", "g"), "")
 }
-
-String.prototype.truncate = function(size = 20): string {
-  return `${this.substring(0, size)}${this.length > size ? "..." : ""}`
-}

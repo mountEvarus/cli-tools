@@ -1,4 +1,5 @@
 import "@src/extension"
+import "@evan-abc/typescript-helpers"
 
 import { Command } from "commander"
 

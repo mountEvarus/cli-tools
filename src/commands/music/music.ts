@@ -1,6 +1,7 @@
+import { assert } from "@evan-abc/typescript-helpers"
 import { Command } from "commander"
 
-import { Log, assert, atLeastOneTrue, runIfPredicate } from "@src/utils"
+import { Log, atLeastOneTrue, runIfPredicate } from "@src/utils"
 
 import { copyMusic, log } from "./actions"
 import { MusicFile, getMusicFilesFromPlaylist } from "./music-file"
@@ -22,8 +23,8 @@ async function doMusic(options: Options): Promise<void> {
   const { copy, info, missingMetadata, playlist } = options
 
   try {
-    assert(!!playlist, "You must define the playlist")
-    assert(atLeastOneTrue(copy, info), "No options were selected for this module!")
+    assert(!!playlist, new Error("You must define the playlist"))
+    assert(atLeastOneTrue(copy, info), new Error("No options were selected for this module!"))
 
     const musicFiles = (await Promise
       .all(getMusicFilesFromPlaylist(playlist)))

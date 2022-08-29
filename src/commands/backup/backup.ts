@@ -1,8 +1,9 @@
 import * as fs from "fs"
 
+import { assert } from "@evan-abc/typescript-helpers"
 import { Command } from "commander"
 
-import { Log, allTrue, assert, csvToArray, replaceHomeVar, scp } from "@src/utils"
+import { Log, allTrue, csvToArray, replaceHomeVar, scp } from "@src/utils"
 
 import { Directory } from "./directory"
 import { File } from "./file"
@@ -25,7 +26,7 @@ function doBackup(options: Options): void {
   try {
     assert(
       allTrue(destination, paths.length),
-      "destination & paths must be defined, see 'backup --help' for more details",
+      new Error("destination & paths must be defined, see 'backup --help' for more details"),
     )
 
     const rootDir = Directory
