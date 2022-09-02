@@ -4,7 +4,7 @@ import { Command } from "commander"
 import { Log, atLeastOneTrue, runIfPredicate } from "@src/utils"
 
 import { copyMusic, log } from "./actions"
-import { MusicFile, getMusicFilesFromPlaylist } from "./music-file"
+import { getMusicFilesFromPlaylist } from "./music-file"
 import { Options } from "./options"
 
 export function addMusic(program: Command): void {
@@ -26,10 +26,8 @@ async function doMusic(options: Options): Promise<void> {
     assert(!!playlist, new Error("You must define the playlist"))
     assert(atLeastOneTrue(copy, info), new Error("No options were selected for this module!"))
 
-    const musicFiles = (await Promise
-      .all(getMusicFilesFromPlaylist(playlist)))
-      .filter(file => file)
-      .filter(file => missingMetadata ? file?.isMissingMetadata() : true) as MusicFile[]
+    const musicFiles = (await getMusicFilesFromPlaylist(playlist))
+      .filter(file => missingMetadata ? file?.isMissingMetadata() : true)
 
     runIfPredicate(() => log(musicFiles), info)
     runIfPredicate(() => copyMusic(musicFiles, copy), copy)

@@ -19,6 +19,7 @@ export class MusicFile {
   }
 
   static create(rawData: string): MusicFile {
+    Log.info(`Creating music file for ${rawData}`)
     return new MusicFile(rawData)
   }
 
@@ -90,10 +91,20 @@ export class MusicFile {
   }
 }
 
-export function getMusicFilesFromPlaylist(playlistPath: string): Promise<MusicFile | undefined>[] {
-  return fs
-    .readFileSync(playlistPath, "utf-8")
+export async function getMusicFilesFromPlaylist(playlistPath: string): Promise<MusicFile[]> {
+  const data = fs.readFileSync(playlistPath, "utf-8")
     .split("\r\n")
-    .filter((e) => e)
-    .map(async (data) => await MusicFile.create(data).init())
+    .filter(e => e)
+
+  const musicFiles: MusicFile[] = []
+
+  for (const dataset of data) {
+    const musicFile = await MusicFile.create(dataset).init()
+
+    if (musicFile) {
+      musicFiles.push(musicFile)
+    }
+  }
+
+  return musicFiles
 }
