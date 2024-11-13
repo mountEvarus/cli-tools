@@ -37,3 +37,6 @@ jobs:
 
       - name: Dependency Checking
         run: bun run knip
+
+      - name: Testing
+        run: bun test
