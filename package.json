@@ -8,7 +8,7 @@
     "format": "prettier --write src --config ./.prettierrc",
     "format:check": "prettier --check src --config ./.prettierrc",
     "lint": "eslint src --ext .ts",
-    "start": "bun --watch src/index.ts",
+    "start": "bun src/index.ts",
     "ts-check": "tsc --noemit"
   },
   "dependencies": {

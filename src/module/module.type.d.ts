@@ -1,5 +1,5 @@
 export type ModuleMetadata = {
-  description?: string;
+  description: string;
   name: string;
   options: ModuleOption[];
 };

@@ -9,12 +9,7 @@ export const addModuleToProgram = <T extends Record<string, string | boolean | s
   metadata: ModuleMetadata,
   action: (options: T) => Promise<void> | void,
 ): void => {
-  program.command(metadata.name);
-
-  if (metadata.description) {
-    program.description(metadata.description);
-  }
-
+  let loadedCommand = program.command(metadata.name).description(metadata.description);
   if (metadata.options.length > 0) {
     metadata.options.forEach(option => {
       if (Array.isArray(option.defaultValue)) {
@@ -22,11 +17,11 @@ export const addModuleToProgram = <T extends Record<string, string | boolean | s
         return;
       }
 
-      program.option(option.flags, option.description, option.defaultValue);
+      loadedCommand = loadedCommand.option(option.flags, option.description, option.defaultValue);
     });
   }
 
-  program.action(async options => {
+  loadedCommand.action(async options => {
     console.info(`Running ${metadata.name} module`);
     try {
       await action(options);
