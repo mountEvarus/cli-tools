@@ -1,16 +1,16 @@
-import { $ } from 'bun';
 import { homedir } from 'os';
+import { exec } from 'shelljs';
 
 export const cp = (sourceDir: string, destinationDir: string): void => {
-  $`cp -r "${sourceDir}" "${destinationDir}"`;
+  exec(`cp -r "${sourceDir}" "${destinationDir}"`);
 };
 
 export const mkdir = (directory: string): void => {
-  $`mkdir -p "${directory}"`;
+  exec(`mkdir -p "${directory}"`);
 };
 
 export const scp = (sourceDir: string, destinationDir: string): void => {
-  $`scp -r "${sourceDir}" "${destinationDir}"`;
+  exec(`scp -r "${sourceDir}" "${destinationDir}"`);
 };
 
 export const replaceHomeVar = (path: string): string => {

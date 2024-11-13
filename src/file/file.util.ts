@@ -5,7 +5,8 @@ export const getFilesFromDirectory = (directoryPath: string): string[] => {
   const paths: string[] = [];
 
   fs.readdirSync(directoryPath, 'utf-8').forEach(file => {
-    const absolutePath = path.join(directoryPath, file);
+    const prefix = directoryPath.startsWith('./') ? './' : '';
+    const absolutePath = `${prefix}${path.join(directoryPath, file)}`;
 
     fs.statSync(absolutePath).isDirectory()
       ? paths.push(...getFilesFromDirectory(absolutePath))

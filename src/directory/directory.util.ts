@@ -1,4 +1,4 @@
-import { $ } from 'bun';
+import { exec } from 'shelljs';
 
 import { getFilesFromDirectory } from '@/src/file';
 
@@ -30,8 +30,9 @@ export const handleDirectoryAction = (options: DirectoryModuleOptions): void => 
 
 const removeFiles = (files: string[]): void => {
   files.forEach(file => {
+    console.log({ file });
     console.info(`Removing ${file}`);
-    $`rm -rf "${file}"`;
+    exec(`rm -rf "${file}"`);
   });
 };
 
