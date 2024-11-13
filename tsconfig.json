@@ -15,7 +15,8 @@
     "noImplicitAny": false,
     "outDir": "dist",
     "paths": {
-      "@/src/*": ["src/*"]
+      "@/src/*": ["src/*"],
+      "@/root/*": ["./*"]
     },
     "removeComments": true,
     "resolveJsonModule": true,
