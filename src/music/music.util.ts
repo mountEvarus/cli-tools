@@ -1,3 +1,5 @@
+import path from 'path';
+
 import { MusicFile } from './music';
 import { MusicModuleOptions } from './music.type';
 
@@ -25,14 +27,17 @@ export const handleMusicAction = async (options: MusicModuleOptions): Promise<vo
   }
 };
 
-export async function getMusicFilesFromPlaylist(playlistPath: string): Promise<MusicFile[]> {
+export const getMusicFilesFromPlaylist = async (playlistPath: string): Promise<MusicFile[]> => {
   const rawData = await Bun.file(playlistPath).text();
-  const data = rawData.split('\r\n').filter(Boolean);
+  const data = rawData.split('\n').filter(Boolean);
 
   const musicFiles: MusicFile[] = [];
 
   for (const dataset of data) {
-    const musicFile = await MusicFile.create(dataset).init();
+    const playlistDir = path.dirname(path.resolve(playlistPath));
+    const resultingPath = path.join(playlistDir, dataset);
+
+    const musicFile = await MusicFile.create(resultingPath).init();
 
     if (musicFile) {
       musicFiles.push(musicFile);
