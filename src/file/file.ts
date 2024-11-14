@@ -19,30 +19,12 @@ export class File {
     return new Date().toISOString();
   };
 
-  private fileHasNoExtension = (): boolean => {
-    const fileStartsWithDot = this.file.startsWith('.');
-    const fileOnlyHasOneDot = this.file.split('.').length - 1 === 1;
-
-    return fileStartsWithDot && fileOnlyHasOneDot;
-  };
-
   appendDate = (): File => {
-    const dateSuffix = `-${this.formatDate()}`;
+    const extension = path.extname(this.file);
+    const fileName = path.basename(this.file, extension);
+    const dateSuffix = this.formatDate();
 
-    if (this.fileHasNoExtension()) {
-      const datedFileName = `${this.file}-${dateSuffix}`;
-
-      this.file = datedFileName;
-
-      return this;
-    }
-
-    const index = this.file.lastIndexOf('.');
-
-    const fileName = this.file.substring(0, index);
-    const extension = this.file.substring(index + 1);
-
-    const datedFileName = `${fileName}-${dateSuffix}.${extension}`;
+    const datedFileName = `${fileName}-${dateSuffix}${extension}`;
 
     this.file = datedFileName;
 
