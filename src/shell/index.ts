@@ -1,1 +1,1 @@
-export * from './shell.utils';
+export * from './shell.util';
