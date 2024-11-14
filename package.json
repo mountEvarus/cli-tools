@@ -9,6 +9,13 @@
     "format:check": "prettier --check src --config ./.prettierrc",
     "lint": "eslint src --ext .ts",
     "start": "bun src/index.ts",
+    "start:example:backup": "bun src/index.ts backup -p ./example/music -d ./example",
+    "start:example:directory:info": "bun src/index.ts directory -d ./example -i",
+    "start:example:directory:info:extension": "bun src/index.ts directory -d ./example -i -e mp3",
+    "start:example:directory:remove": "bun src/index.ts directory -d ./example -x",
+    "start:example:directory:remove:extension": "bun src/index.ts directory -d ./example -x -e mp3",
+    "start:example:music:copy": "bun src/index.ts music -p ./example/playlist.m3u -c ./example/test",
+    "start:example:music:info": "bun src/index.ts music -p ./example/playlist.m3u -i",
     "ts-check": "tsc --noemit"
   },
   "dependencies": {
