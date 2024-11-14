@@ -10,7 +10,7 @@ export const BACKUP_MODULE_METADATA: ModuleMetadata = {
       flags: '-d, --destination <path>',
     },
     {
-      defaultValue: [],
+      defaultValue: '',
       description: 'comma seperated list of paths to backup',
       flags: '-p, --paths <path[]>',
     },

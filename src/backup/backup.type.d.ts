@@ -1,5 +1,5 @@
 export type BackupModuleOptions = {
   destination: string;
-  paths: string[];
+  paths: string;
   remote: boolean;
 };
