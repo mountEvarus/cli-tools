@@ -1,6 +1,6 @@
 {
   "name": "@mountevarus/cli-tools",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Evan Hynes <ewbhynes@gmail.com>",
   "private": true,
   "type": "module",
