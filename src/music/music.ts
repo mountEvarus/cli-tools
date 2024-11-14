@@ -19,6 +19,19 @@ export class MusicFile {
     this.path = rawData;
   }
 
+  get value() {
+    return {
+      album: this.album,
+      albumArtist: this.albumArtist,
+      artist: truncateString(this.artist, 40) ?? '',
+      coverArt: this.coverArt,
+      lossless: this.lossless,
+      path: truncateString(this.path, 25) ?? '',
+      title: this.title,
+      year: this.year,
+    };
+  }
+
   static create(rawData: string): MusicFile {
     console.info(`Creating music file for ${rawData}`);
     return new MusicFile(rawData);
@@ -77,12 +90,5 @@ export class MusicFile {
 
   isMissingMetadata = (): boolean => {
     return [this.album, this.albumArtist, this.artist, this.coverArt, this.title, this.year].some(v => !v);
-  };
-
-  truncateData = (): MusicFile => {
-    this.artist = truncateString(this.artist, 40);
-    this.path = truncateString(this.path, 25) ?? '';
-
-    return this;
   };
 }

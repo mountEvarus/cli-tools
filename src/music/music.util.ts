@@ -45,9 +45,9 @@ export const getMusicFilesFromPlaylist = async (playlistPath: string): Promise<M
   }
 
   return musicFiles;
-}
+};
 
-export function copyMusic(musicFiles: MusicFile[], copy: string): void {
+export const copyMusic = (musicFiles: MusicFile[], copy: string): void => {
   if (!musicFiles.length) {
     console.info(`No music files found to copy to ${copy}`);
     return;
@@ -55,11 +55,11 @@ export function copyMusic(musicFiles: MusicFile[], copy: string): void {
 
   console.info(`Copying over music files to ${copy}`);
   musicFiles.forEach(file => file.copyToDestination(copy));
-}
+};
 
-export function logMusic(musicFiles: MusicFile[]): void {
+export const logMusic = (musicFiles: MusicFile[]): void => {
   if (musicFiles.length) {
     console.info('Logging information');
-    console.table(musicFiles.map(file => file.truncateData()));
+    console.table(musicFiles.map(file => file.value));
   } else console.info('No music files found to log');
-}
+};
